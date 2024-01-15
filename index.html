@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href = "styles.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Design Generator</title>
+</head>
+
+<header>
+    <h1>Design Generator</h1>
+    <h2>Create your own design in seconds.</h2>
+</header>
+
+<body>
+    <div class="design" id="design">
+        <div class="greeting" id="greeting">Happy New Year!</div>
+        <div class="signoff" id="signoff">- WAI</div>
+        <div class="clientimage" id="clientimage">Your image will appear here</div>
+        <div class="WAI" id="WAI"></div>
+    </div>
+
+    <div class="export-design">
+        <button type="button" id="export-button" name="Export Design" value="Export Design" class="export">Export Design</button>
+    </div>
+
+    <div class="instructions">Double-click to drag your text and image</div>
+    <output name="colornow" id="colornow">The current color is:</output>
+    <div class="null-buttons">
+        <button type="button" id="null-greeting-button" name="No Greeting" value="No Greeting" class="null">Remove Greeting</button>
+        <button type="button" id="null-signoff-button" name="No Signoff" value="No Signoff" class="null">Remove Sign-Off</button>
+        <button type="button" id="null-logo-button" name="No Logo" value="No Logo" class="null">Remove Logo</button>
+        <button type="button" id="null-design-button" name="No Design" value="No Design" class="null">Remove Design</button>
+    </div>
+    
+    <div class="custom texts">
+        <h3>#1 Customise your text:</h3>
+        <label for="greeting-text-input">Greeting Text:<br></label>
+        <input type="text" id="greeting-text-input" name="greeting-text-input" maxlength="50" required onchange="changeGreetingText()"><br>
+        <label for="signoff-input">Sign-Off:<br></label>
+        <input type="text" id="signoff-input" name="signoff-input" maxlength="50" required onchange="changeSignoff()"><br>
+        <label for="font">Font:</label>
+        <select name="font" id="font" onchange="changeFont()">
+            <option value="arial">Arial</option>
+            <option value="courier new">Courier New</option>
+            <option value="garamond">Garamond</option>
+            <option value="georgia">Georgia</option>
+            <option value="helvetica">Helvetica</option>
+            <option value="tahoma">Tahoma</option>
+            <option value="times new roman">Times New Roman</option>
+            <option value="verdana">Verdana</option>
+        </select><br>
+        <label for="font-size">Font Size:</label>
+        <select name="font-size" id="font-size" onchange="changeFontSize()">
+            <option value="20">20</option>
+            <option value="24">24</option>
+            <option value="28">28</option>
+            <option value="32">32</option>
+            <option value="36">36</option>
+            <option value="40">40</option>
+            <option value="48">48</option>
+            <option value="56">56</option>
+        </select><br>
+        <label for="font-color">Font Color:</label>
+        <select name="font-color" id="font-color" onchange="changeFontColor()">
+            <option value="black">Black</option>
+            <option value="blue">Blue</option>
+            <option value="brown">Brown</option>
+            <option value="green">Green</option>
+            <option value="maroon">Maroon</option>
+            <option value="navy">Navy</option>
+            <option value="olive">Olive</option>
+            <option value="orange">Orange</option>
+            <option value="pink">Pink</option>
+            <option value="red">Red</option>
+            <option value="teal">Teal</option>
+        </select>
+    </div>
+
+    <div class="custom colors">
+        <h3>#2 Customise a design or color:</h3>
+        <h4>#2.1 Customise a design</h4>
+        <div class="random-design">
+            <label for="design-button">Need Background Design Ideas?</label>
+            <button type="button" id="design-button" name="Random Design" value="Random Design" onclick="randomDesign()" class="randomdesign">Generate a Random Design!</button>
+        </div>
+        <label for="design-choice">Design Choice:</label>
+        <select name="design-choice" id="design-choice" onchange="chooseDesign()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+        <div class="design-input">
+            <label for="design-input">Upload your Design</label><br>
+                <input type="file" accept="image/*" id="design-input" onchange="displayDesign()">
+        </div>
+        <br><hr>
+        <h4>#2.2 Customise a color</h4>
+        <label for="color">Popular Color Choices:</label>
+        <select name="color" id="color" onchange="chooseColor()">
+            <option value="black">Black</option>
+            <option value="blue">Blue</option>
+            <option value="brown">Brown</option>
+            <option value="green">Green</option>
+            <option value="maroon">Maroon</option>
+            <option value="navy">Navy</option>
+            <option value="olive">Olive</option>
+            <option value="orange">Orange</option>
+            <option value="pink">Pink</option>
+            <option value="red">Red</option>
+            <option value="teal">Teal</option>
+        </select>
+        <div class="random-color">
+            <label for="color-button">Need Background Color Ideas?</label>
+            <button type="button" id="color-button" name="Random Color" value="Random Color" onclick="randomColor()" class="randomcolor">Generate a Random Color!</button>
+        </div>
+        <div class = "rgb">
+            <p>RGB Color Code</p>
+            <label for="red-input">Red</label>
+            <input type="number" id="red-input" name="red-input" min="0" max="255" value="0" onchange="rgbColor()">
+            <label for="green-input">Green</label>
+            <input type="number" id="green-input" name="green-input" min="0" max="255" value="0" onchange="rgbColor()">
+            <label for="blue-input">Blue</label>
+            <input type="number" id="blue-input" name="blue-input" min="0" max="255" value="0" onchange="rgbColor()">
+        </div>
+    </div>
+
+    <div class="custom logo">
+        <h3>#3 Customise your logo:</h3>
+        <div class="file-input">
+            <label for="file-input">Upload an Image</label><br>
+                <input type="file" accept="image/*" id="file-input" onchange="displayImage()">
+        </div>
+    </div>
+
+    <div class="end">
+        <p>What else would you like to change?</p>
+    </div>
+</body>
+
+
+
+<footer>
+        <script src="script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</footer>
+
+</html>
